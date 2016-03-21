@@ -1,6 +1,25 @@
-main{
+html,body,main{
     height: 100%;
 }
+
+nav{
+    background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%);
+    color: #ffffff;
+    text-decoration-color: white;
+}
+
+nav a{
+    color: white;
+}
+
+nav a:link{
+    color: #a6e1ec;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
 .req-container{
     float: left;
     position: relative;
@@ -11,15 +30,52 @@ main{
     padding: 15px;
 }
 
-.panel-heading{
-    color: #ffffff;
-}
-
-.text-container{
-    width: 66.666667%;
-    float: left;
-    position: relative;
-    background-color: #9d9d9d;
+.panel-body{
     height: 100%;
 }
 
+.req-container .panel-heading{
+    background-image: none;
+    background-color: #0275d8;
+}
+
+.req-container .panel-heading{
+    color: #ffffff;
+}
+
+.edit-container{
+    width: 66.666667%;
+    float: right;
+    position: relative;
+    height: 100vh;
+}
+
+.edit-container .panel-heading{
+    height: 55px;
+}
+
+.edit-container .panel-body{
+    background-color: gainsboro;
+    height: 100vh;
+}
+
+.edit-container ul li{
+    display: inline;
+}
+
+.text-container textarea{
+    width: 95%;
+    height: 95vh;
+}
+
+.project-container{
+    margin: 15px;
+}
+
+.card-block:hover{
+    background-color: #2b669a;
+}
+
+.card-block h6{
+    color: white;
+}

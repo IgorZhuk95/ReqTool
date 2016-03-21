@@ -1,6 +1,5 @@
 function ManageReqModel() {
     var self = this;
-    self.reqs = [];
 
     self.getReqs = function(callback){
         console.log("getReqs");
@@ -9,10 +8,9 @@ function ManageReqModel() {
             $.each(data, function(key, val){
                 reqs.push(new ReqModel(val));
             });
-            callback && callback();
-            self.reqs = reqs;
             localStorage.clear();
             localStorage.setItem('reqList', JSON.stringify(reqs));
+            callback && callback();
         }).done(function() {
                 console.info( "success: getReqs()" );
             })
@@ -35,15 +33,40 @@ function ManageReqModel() {
         })
     };
 
-    self.display = function(){
-        console.log("display Reqs");
+    self.displayReqList = function(callback){
+        console.log("display displayReqList");
         var result = localStorage.getItem('reqList');
         var reqList = JSON.parse(result);
         reqList.forEach(function(item, i, reqList){
             $('.req-list').append(
-                "<li>" + item.title + "</li>"
+                "<li><a id='" + item.id + "' class='req-li' >" + item.title + "</a></li>"
             );
         });
+        callback && callback();
     };
 
+    self.clickReq = function(id){
+        console.log("clickReq()");
+        $('.req-li').click(function(){
+            self.displayReqDesc($(this).attr("id"));
+         });
+    };
+
+    self.displayReqDesc = function(id){
+        console.log("display displayReqDesc");
+        var result = localStorage.getItem('reqList');
+        var reqList = JSON.parse(result);
+        var currentId = id - 1;
+
+        console.log(reqList[currentId]);
+        $('.risk-input').val();
+        $('.price-input').val();
+        $('.endDate-input').val();
+        $('.description-input').val();
+
+        $('.risk-input').val(reqList[currentId].risk);
+        $('.price-input').val(reqList[currentId].price);
+        $('.endDate-input').val(reqList[currentId].endDate);
+        $('.description-input').val(reqList[currentId].description);
+    };
 }

@@ -7,15 +7,15 @@
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="js/lib/jquery-2.2.1.min.js"></script>
-    <script src="js/lib/bootstrap.js"></script>
-    <script src="js/core/ManageReqModel.js"></script>
-    <script src="js/core/ReqModel.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/core/ManageProjectModel.js"></script>
+    <script src="js/core/ProjectModel.js"></script>
 
     <title>ReqTool</title>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">ReqTool</a>
@@ -25,21 +25,16 @@
 </header>
 
 <main>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="card card-inverse card-success">
-                    <div class="card-block bg-success">
-                        <div class="rotate">
-                            <i class="fa fa-user fa-5x"></i>
-                        </div>
-                        <h6 class="text-uppercase">Users</h6>
-                        <h1 class="display-1">134</h1>
-                    </div>
-                </div>
+
+        <div class="project-container row" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="container-fluid">
+                My SRS:
             </div>
-    </div>
-    </div>
+        </div>
+
+        <div class="container-fluid" align="right" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="img/trash.png" alt="trash" width="60" height="60">
+        </div>
 </main>
 <script>
 
@@ -48,6 +43,20 @@
         ModelView = new ManageProjectModel();
         ModelView.getProjects(function () { ModelView.display() });
     });
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
 
     function perfStart(name) {
         console.time(name);
