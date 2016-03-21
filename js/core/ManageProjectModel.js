@@ -1,23 +1,22 @@
-function ManageReqModel() {
+function ManageProjectModel() {
     var self = this;
-    self.reqs = [];
 
-    self.getReqs = function(callback){
-        console.log("getReqs");
-        $.getJSON('json/Req.json', function(data) {
-            var reqs = [];
+    self.getProjects = function(callback){
+        console.log("getProjects");
+        $.getJSON('json/Project.json', function(data) {
+            var projects = [];
             $.each(data, function(key, val){
-                reqs.push(new ReqModel(val));
+                projects.push(new ProjectModel(val));
             });
             callback && callback();
-            self.reqs = reqs;
+
             localStorage.clear();
-            localStorage.setItem('reqList', JSON.stringify(reqs));
+            localStorage.setItem('projectList', JSON.stringify(projects));
         }).done(function() {
-                console.info( "success: getReqs()" );
+                console.info( "success: getProjects()" );
             })
             .fail(function() {
-                console.error( "error: getReqs()" );
+                console.error( "error: getProjects()" );
             });
     };
 
@@ -36,8 +35,8 @@ function ManageReqModel() {
     };
 
     self.display = function(){
-        console.log("display Reqs");
-        var result = localStorage.getItem('reqList');
+        console.log("display Projects");
+        var result = localStorage.getItem('projectList');
         var reqList = JSON.parse(result);
         reqList.forEach(function(item, i, reqList){
             $('.req-list').append(
@@ -45,5 +44,4 @@ function ManageReqModel() {
             );
         });
     };
-
 }

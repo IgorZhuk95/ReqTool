@@ -4,6 +4,6 @@ function ReqModel(req) {
     self.title =req.title;
     self.risk = req.risk;
     self.price = req.price;
-    self.end_date = req.end_date;
+    self.endDate = req.endDate;
     self.description = req.description;
 }

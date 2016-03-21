@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/lib/jquery-2.2.1.min.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/core/ManageReqModel.js"></script>
+    <script src="js/core/ReqModel.js"></script>
+
+
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">ReqTool</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+            <div class="req-container panel panel-primary">
+                <div class="panel-heading">
+                    SRS structure
+                </div>
+                <div class="panel-body">
+                    <ul class="req-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="description-container container-fluid">
+                <div class="edit-container">
+
+                </div>
+            </div>
+
+        <div id="stage">
+
+        </div>
+    </main>
+    <script>
+        AppBaseURL = "~/";
+
+        jQuery(function ($) {
+
+            ModelView = new ManageReqModel();
+            ModelView.getReqs(function () { ModelView.display() });
+        });
+
+        function perfStart(name) {
+            console.time(name);
+        }
+        function perfEnd(name) {
+            console.timeEnd(name);
+        }
+    </script>
+</body>
+</html>
