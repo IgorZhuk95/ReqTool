@@ -1,3 +1,8 @@
+/**
+ * Requirement class
+ * @param req
+ * @constructor
+ */
 function ReqModel(req) {
     var self = this;
     self.id = req.id;

@@ -1,6 +1,14 @@
+/**
+ * Function managing ReqModel
+ * @constructor
+ */
 function ManageReqModel() {
     var self = this;
 
+    /**
+     * Get JSON from Req.json
+     * @param callback
+     */
     self.getReqs = function(callback){
         console.log("getReqs");
         $.getJSON('json/Req.json', function(data) {
@@ -19,20 +27,10 @@ function ManageReqModel() {
             });
     };
 
-    self.save = function(){
-        console.log("save");
-        var modified = new Array();
-
-        $.ajax({
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            url: AppBaseUrl + "json/Req.json",
-            data: {stringData: stringData},
-            success : function(d){
-                alert('done');}
-        })
-    };
-
+    /**
+     * Function displaying list of requirements on req.html
+     * @param callback
+     */
     self.displayReqList = function(callback){
         console.log("display displayReqList");
         var result = localStorage.getItem('reqList');
@@ -45,6 +43,10 @@ function ManageReqModel() {
         callback && callback();
     };
 
+    /**
+     * Returned  attributes of requirement by click on requirement
+     * @param id
+     */
     self.clickReq = function(id){
         console.log("clickReq()");
         $('.req-li').click(function(){
@@ -52,6 +54,10 @@ function ManageReqModel() {
          });
     };
 
+    /**
+     * Function displaying attributes of requirements  on req.html
+     * @param id
+     */
     self.displayReqDesc = function(id){
         console.log("display displayReqDesc");
         var result = localStorage.getItem('reqList');

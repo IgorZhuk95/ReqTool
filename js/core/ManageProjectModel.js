@@ -1,6 +1,14 @@
+/**
+ * Function managing ReqModel
+ * @constructor
+ */
 function ManageProjectModel() {
     var self = this;
 
+    /**
+     * Get JSON from Project.json
+     * @param callback
+     */
     self.getProjects = function(callback){
         console.log("getProjects");
         $.getJSON('json/Project.json', function(data) {
@@ -20,20 +28,9 @@ function ManageProjectModel() {
             });
     };
 
-    self.save = function(){
-        console.log("save");
-        var modified = new Array();
-
-        $.ajax({
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            url: AppBaseUrl + "json/Req.json",
-            data: {stringData: stringData},
-            success : function(d){
-                alert('done');}
-        })
-    };
-
+    /**
+     * Function displaying list of projects on index.html
+     */
     self.display = function(){
         console.log("display Projects");
         var result = localStorage.getItem('projectList');
